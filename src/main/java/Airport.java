@@ -69,7 +69,7 @@ public class Airport {
                 condition= true;
             }
         }
-        if (condition==true){
+        if (condition){
             return flightNumbers;}
         else{throw new Exception("No flights to this destination. Please enter a different destination.");}
     }
