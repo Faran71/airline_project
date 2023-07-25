@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Airport {
     private String airportName;
@@ -12,16 +13,28 @@ public class Airport {
 
     public void displayFlights() {
         for (Flight flight : flights) {
-            System.out.println("Destination: " + flight.getDestination() + "         Flight Number: " + flight.getFlightId());
+//            System.out.println("Destination: " + flight.getDestination() + "         Flight Number: " + flight.getFlightId() + "        Departure Time: "+ flight.getDepartureTime());
+            System.out.printf("| %-30s | %-30s | %-30s |%n", "Destination: " + flight.getDestination(), "Flight Number: " + flight.getFlightId(),  "Departure Time: "+ flight.getDepartureTime());
         }
     }
 
-    public void bookPassenger(Passenger passenger, int flightId) {
+    public void bookPassenger(Passenger passenger, int flightId) throws Exception{
+        boolean condition1 = false;
         for (Flight flight : flights) {
-            if (flight.getFlightId() == flightId) {
+            if (flight.getFlightId() == flightId && flight.getNumberOfPassengers()<flight.getCapacity()) {
                 flight.addPassenger(passenger);
+                Random rand = new Random();
+                String referenceNumber = flightId + Integer.toString(rand.nextInt(100,999));
+                passenger.setReference(referenceNumber);
+                System.out.println("Your reference number is : "+referenceNumber);
+                condition1 = true;
+                break;
             }
         }
+        if (condition1 == false){
+            throw new Exception("Flight is overbooked");
+        }
+
     }
 
     public void addFlight(Flight flight) {
