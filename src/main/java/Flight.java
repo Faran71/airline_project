@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
-public class Flight {
+public class Flight extends Airport{
 
     private String destination;
     private int flightId;
-    private ArrayList<String> passengerList;
+    private ArrayList<Passenger> passengerList;
 
     public Flight(String destination, int flightId){
         this.destination = destination;
         this.flightId = flightId;
-        passengerList = new ArrayList<String>();
+        passengerList = new ArrayList<Passenger>();
     }
 
-    public void addPassenger(String nameOfPassenger){
+    public void addPassenger(Passenger nameOfPassenger){
         passengerList.add(nameOfPassenger);
     }
 
-    public void removePassenger(String nameOfPassenger){
+    public void removePassenger(Passenger nameOfPassenger){
         passengerList.remove(nameOfPassenger);
     }
 
