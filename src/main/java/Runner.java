@@ -31,10 +31,11 @@ public class Runner {
 //        }
 
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
         System.out.println("Would you like to book a flight? Enter true or false.");
-        boolean runProgram = scanner.nextBoolean();
+        boolean runProgram = scanner2.nextBoolean();
         boolean morePassenger = runProgram;
+        Scanner scanner = new Scanner(System.in);
         while(morePassenger == true){
             System.out.println("What is your name?");
 //            Scanner scanner = new Scanner(System.in);
@@ -80,19 +81,22 @@ public class Runner {
 
 
 
-
+        System.out.println("Would you like to see passenger information? Enter true or false.");
+        boolean runProgramInfo = scanner.nextBoolean();
         airport.displayFlights();
         boolean condition=false;
-        while(condition == false){
-            System.out.println("Enter flight id to get passenger details");
-//            Scanner scanner = new Scanner(System.in);
-            int id = scanner.nextInt();
-            try{
-                System.out.println("Number of passengers on flight "+ id +" is " + airport.displayPassengers(id));
-                condition=true;
-            }catch(Exception exception){
-                System.out.println(exception.getMessage());
-                exception.printStackTrace();
+        if (runProgramInfo){
+            while(condition == false){
+                System.out.println("Enter flight number to get passenger details");
+    //            Scanner scanner = new Scanner(System.in);
+                int id = scanner.nextInt();
+                try{
+                    System.out.println("Number of passengers on flight "+ id +" is " + airport.displayPassengers(id));
+                    condition=true;
+                }catch(Exception exception){
+                    System.out.println(exception.getMessage());
+                    exception.printStackTrace();
+                }
             }
         }
 
