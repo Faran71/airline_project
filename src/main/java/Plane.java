@@ -35,4 +35,8 @@ public class Plane {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public Model getModel(){
+        return this.model;
+    }
 }
