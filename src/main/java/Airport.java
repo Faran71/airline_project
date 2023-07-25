@@ -36,22 +36,29 @@ public class Airport {
         }
     }
 
-    public int displayPassengers(int flightId) {
+    public int displayPassengers(int flightId) throws Exception{
         for (Flight flight : flights) {
             if (flight.getFlightId() == flightId) {
                 return flight.getNumberOfPassengers();
             }
 
         }
-        return 0;
+        throw new Exception("Flight ID is invalid, please retry.");
     }
 
-    public void getFlightTo(String destinationOfArrival){
+    public ArrayList<Integer> getFlightTo(String destinationOfArrival) throws Exception{
+        ArrayList<Integer> flightNumbers= new ArrayList<>();
+        boolean condition = false;
         for (Flight flight : flights){
             if (flight.getDestination().equals(destinationOfArrival)){
-                System.out.println("Flight Id: "+flight.getFlightId());
+//                System.out.println("Flight Id: "+flight.getFlightId());
+                flightNumbers.add(flight.getFlightId());
+                condition= true;
             }
         }
+        if (condition==true){
+            return flightNumbers;}
+        else{throw new Exception("No flights to this destination. Please enter a different destination.");}
     }
 
 
